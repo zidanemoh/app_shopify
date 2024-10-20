@@ -1,0 +1,165 @@
+/* إعداد الخلفية */
+.app {
+    background: linear-gradient(180deg, #0C1015 0%, #151D23 54%, #0C1015 100%);
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+/* إعداد شريط التنقل */
+.navbar {
+    background-color: #fff;
+    border-radius: 30px;
+    width: 1431px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 10px 20px; /* إضافة padding لفصل الأزرار عن الحواف */
+}
+.nav-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    width: 129px;
+    height: 42px;
+    font-size: 17px;
+    font-family: 'Alice', serif;
+    cursor: pointer;
+    margin: 0 10px; /* إضافة margin لفصل الأزرار عن بعضها */
+}
+.nav-icon {
+    font-size: 24px;
+   
+}
+/* إعداد المحتوى */
+/* إعداد الحاوية الرئيسية */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* تمكين التمدد العمودي حسب المحتوى */
+    background-color: #181E26;
+    border-radius: 30px;
+    width: 1431px;
+    padding: 20px;
+    gap: 20px; /* ترك مسافة بين المستطيلات */
+
+}
+/* إعداد المستطيلات الثلاثة */
+.section {
+    background-color: #fff;
+    border-radius: 30px;
+    width: 396px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto; /* إزالة أي قيود على الارتفاع لجعلها تتكيف مع المحتوى */
+}
+/* الحاوية الداخلية للحقول */
+.fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* إضافة مسافة بين كل خانة */
+    width: 100%;
+    height: auto; /* تأكد من التمدد حسب المحتوى */
+    color: #000000;
+}
+/* إعداد العناوين لتكون في منتصف المستطيل أفقيًا */
+.fields-container h3 {
+    text-align: center; /* يضع النص في الوسط أفقياً */
+    font-family: 'IBM Plex Sans', sans-serif; /* تطبيق الخط IBM Plex Sans */
+    font-size: 32px; /* يمكنك تعديل حجم الخط حسب الحاجة */
+    margin-bottom: 15px; /* إضافة مساحة أسفل العنوان لإبعادها قليلاً عن الحقول */
+}
+
+/* إعداد عناصر الحقول */
+.field-item {
+    background-color: #39495D;
+    border-radius: 20px;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    height: 50px; /* ارتفاع ثابت لكل خانة */
+    transition: background-color 0.3s ease;
+}
+.field-item .icon {
+    background-color: #000;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.field-item .icon.small {
+    width: 37px;
+    height: 37px;
+}
+/* إعداد زر الحفظ */
+
+.save-button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+    height: 54px;
+    width: 267px;
+    /* تعديل لوضع الزر في منتصف الصفحة */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* إعداد المستطيل preview */
+.section.preview .field-item-preview {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+}
+/* اسم الحقل فوق الخانة */
+.field-label {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+/* إعداد الخانة */
+.field-content {
+    display: flex;
+    align-items: center;
+    background-color: #39495D;
+    border-radius: 30px;
+    padding: 10px;
+    color: #fff;
+    width: 95%;
+    height: 40px;
+}
+/* إعداد الأيقونة */
+.field-content .icon {
+    background-color: #39495D;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    width: 37px;
+    height: 37px;
+    margin-right: 10px;
+}
+/* اسم الحقل داخل الخانة */
+.field-content .field-name {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    color: #fff;
+}

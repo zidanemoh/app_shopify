@@ -1,0 +1,97 @@
+.position-container {
+  background: linear-gradient(180deg, #0C1015 0%, #151D23 54%, #0C1015 100%);
+  padding: 30px;
+  color: white;
+}
+
+/* إعداد شريط التنقل */
+.navbar {
+  background-color: #fff;
+  border-radius: 30px;
+  width: 1431px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 10px 20px; /* إضافة padding لفصل الأزرار عن الحواف */
+}
+
+.nav-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  width: 129px;
+  height: 42px;
+  font-size: 17px;
+  font-family: 'Alice', serif;
+  cursor: pointer;
+  margin: 0 10px; /* إضافة margin لفصل الأزرار عن بعضها */
+}
+
+.home-icon {
+  font-size: 24px;
+}
+
+.form-position-card {
+  background-color: #181E26;
+  width: 1431px;
+  height: 748px;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.form-title {
+  font-family: 'Alice', serif;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.form-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.images-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.image-card {
+  text-align: center;
+}
+
+.form-image {
+  width: 659px;
+  height: 413px;
+  border-radius: 30px;
+}
+
+.mode-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.mode-description {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 24px;
+}
+
+.apply-button {
+  background-color: white;
+  color: black;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  width: 131px;
+  height: 43px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
