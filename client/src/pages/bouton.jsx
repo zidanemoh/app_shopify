@@ -23,6 +23,16 @@ function Bouton() {
   const [popupBorderConcavity, setPopupBorderConcavity] = useState(30);
   const [popupBorderSize, setPopupBorderSize] = useState(1);
 
+  const [activeAnimation, setActiveAnimation] = useState('');
+
+  const applyAnimation = (animation) => {
+    setIsAnimationEnabled(animation);
+    setActiveAnimation(animation);
+    setTimeout(() => {
+      setActiveAnimation(''); // إزالة الأنيميشن بعد وقت معين
+    }, 1000); // يمكن تعديل الوقت
+  };
+
   return (
     <div className="bouton-page">
       <nav className="navbar">
@@ -141,11 +151,36 @@ function Bouton() {
           </div>
 
           <div className="animation-buttons">
-            <button onClick={() => setIsAnimationEnabled('shake')}>Shake</button>
-            <button onClick={() => setIsAnimationEnabled('bounce')}>Bounce</button>
-            <button onClick={() => setIsAnimationEnabled('tada')}>Tada</button>
-            <button onClick={() => setIsAnimationEnabled('flicker')}>Flicker</button>
-            <button onClick={() => setIsAnimationEnabled('squeeze')}>Squeeze</button>
+            <button
+              className={`animation-button ${activeAnimation === 'shake' ? 'shake' : ''}`}
+              onClick={() => applyAnimation('shake')}
+            >
+              Shake
+            </button>
+            <button
+              className={`animation-button ${activeAnimation === 'bounce' ? 'bounce' : ''}`}
+              onClick={() => applyAnimation('bounce')}
+            >
+              Bounce
+            </button>
+            <button
+              className={`animation-button ${activeAnimation === 'tada' ? 'tada' : ''}`}
+              onClick={() => applyAnimation('tada')}
+            >
+              Tada
+            </button>
+            <button
+              className={`animation-button ${activeAnimation === 'flicker' ? 'flicker' : ''}`}
+              onClick={() => applyAnimation('flicker')}
+            >
+              Flicker
+            </button>
+            <button
+              className={`animation-button ${activeAnimation === 'squeeze' ? 'squeeze' : ''}`}
+              onClick={() => applyAnimation('squeeze')}
+            >
+              Squeeze
+            </button>
           </div>
         </div>
 
