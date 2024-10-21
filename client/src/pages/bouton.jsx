@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './styles/bouton.css';
 
 function Bouton() {
+  // حالة الأزرار والإعدادات
   const [buttonTitle, setButtonTitle] = useState("send orders");
   const [buttonTextSize, setButtonTextSize] = useState(32);
   const [buttonTextColor, setButtonTextColor] = useState("#ffffff");
@@ -44,10 +45,10 @@ function Bouton() {
       </nav>
 
       <div className="container">
-
-      
-
         <div className="customization-section">
+          {/* زر الحفظ في أعلى اليمين داخل لوحة التحكم */}
+          <button className="save-button">Save</button>
+
           <h2 className="section-title">Paramètre du bouton</h2>
 
           <div className="input-row">
@@ -225,6 +226,9 @@ function Bouton() {
 
       {/* Popup Button Customization Section */}
       <div className="popup-customization-section">
+        {/* زر الحفظ في أعلى اليمين داخل لوحة التحكم */}
+        <button className="save-button">Save</button>
+
         <h2 className="section-title">Paramètre du bouton (Pop-up)</h2>
 
         <div className="input-row">
@@ -299,16 +303,6 @@ function Bouton() {
             />
           </div>
         </div>
-
-        <button 
-          className="save-button"
-          style={{
-            backgroundColor: "#000",
-            color: "#fff",
-          }}
-        >
-          save
-        </button>
       </div>
 
       {/* Preview Popup Button */}
@@ -330,6 +324,10 @@ function Bouton() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default Bouton;
 
   );
 }
