@@ -12,6 +12,7 @@ function Bouton() {
   const [borderSize, setBorderSize] = useState(1);
   const [isShadowEnabled, setIsShadowEnabled] = useState(false);
   const [isAnimationEnabled, setIsAnimationEnabled] = useState('');
+  const [activeAnimationButton, setActiveAnimationButton] = useState(''); // حالة لتتبع الزر النشط
 
   // State variables for Pop-up button
   const [popupButtonTitle, setPopupButtonTitle] = useState("commondes");
@@ -23,14 +24,10 @@ function Bouton() {
   const [popupBorderConcavity, setPopupBorderConcavity] = useState(30);
   const [popupBorderSize, setPopupBorderSize] = useState(1);
 
-  const [activeAnimation, setActiveAnimation] = useState('');
-
-  const applyAnimation = (animation) => {
+  // Handle animation for both the main and pop-up buttons
+  const handleAnimationChange = (animation) => {
     setIsAnimationEnabled(animation);
-    setActiveAnimation(animation);
-    setTimeout(() => {
-      setActiveAnimation(''); // إزالة الأنيميشن بعد وقت معين
-    }, 1000); // يمكن تعديل الوقت
+    setActiveAnimationButton(animation); // تحديث حالة الزر النشط
   };
 
   return (
@@ -47,9 +44,12 @@ function Bouton() {
       </nav>
 
       <div className="container">
+
+      
+
         <div className="customization-section">
           <h2 className="section-title">Paramètre du bouton</h2>
-          
+
           <div className="input-row">
             <div className="input-group">
               <label>TITRE DU BOUTON</label>
@@ -152,32 +152,32 @@ function Bouton() {
 
           <div className="animation-buttons">
             <button
-              className={`animation-button ${activeAnimation === 'shake' ? 'shake' : ''}`}
-              onClick={() => applyAnimation('shake')}
+              className={`animation-button ${isAnimationEnabled === 'shake' ? 'shake' : ''} ${activeAnimationButton === 'shake' ? 'active' : ''}`}
+              onClick={() => handleAnimationChange('shake')}
             >
               Shake
             </button>
             <button
-              className={`animation-button ${activeAnimation === 'bounce' ? 'bounce' : ''}`}
-              onClick={() => applyAnimation('bounce')}
+              className={`animation-button ${isAnimationEnabled === 'bounce' ? 'bounce' : ''} ${activeAnimationButton === 'bounce' ? 'active' : ''}`}
+              onClick={() => handleAnimationChange('bounce')}
             >
               Bounce
             </button>
             <button
-              className={`animation-button ${activeAnimation === 'tada' ? 'tada' : ''}`}
-              onClick={() => applyAnimation('tada')}
+              className={`animation-button ${isAnimationEnabled === 'tada' ? 'tada' : ''} ${activeAnimationButton === 'tada' ? 'active' : ''}`}
+              onClick={() => handleAnimationChange('tada')}
             >
               Tada
             </button>
             <button
-              className={`animation-button ${activeAnimation === 'flicker' ? 'flicker' : ''}`}
-              onClick={() => applyAnimation('flicker')}
+              className={`animation-button ${isAnimationEnabled === 'flicker' ? 'flicker' : ''} ${activeAnimationButton === 'flicker' ? 'active' : ''}`}
+              onClick={() => handleAnimationChange('flicker')}
             >
               Flicker
             </button>
             <button
-              className={`animation-button ${activeAnimation === 'squeeze' ? 'squeeze' : ''}`}
-              onClick={() => applyAnimation('squeeze')}
+              className={`animation-button ${isAnimationEnabled === 'squeeze' ? 'squeeze' : ''} ${activeAnimationButton === 'squeeze' ? 'active' : ''}`}
+              onClick={() => handleAnimationChange('squeeze')}
             >
               Squeeze
             </button>
@@ -315,7 +315,7 @@ function Bouton() {
       <div className="popup-preview-section">
         <h3>pop_up</h3>
         <button 
-          className="popup-button"
+          className={`popup-button ${isAnimationEnabled}`}  
           style={{
             background: `linear-gradient(to right, ${popupButtonLeftBgColor}, ${popupButtonRightBgColor})`,
             color: popupButtonTextColor,
@@ -323,12 +323,14 @@ function Bouton() {
             borderColor: popupButtonBorderColor,
             borderRadius: `${popupBorderConcavity}px`,
             borderWidth: `${popupBorderSize}px`,
+            boxShadow: isShadowEnabled ? '2px 2px 10px rgba(0, 0, 0, 0.2)' : 'none',  // تطبيق الظل إن كان مفعلاً
           }}
         >
           {popupButtonTitle}
         </button>
       </div>
     </div>
+
   );
 }
 
