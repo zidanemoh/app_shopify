@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './styles/bouton.css';
 
 function Bouton() {
-  // حالة الأزرار والإعدادات
   const [buttonTitle, setButtonTitle] = useState("send orders");
   const [buttonTextSize, setButtonTextSize] = useState(32);
   const [buttonTextColor, setButtonTextColor] = useState("#ffffff");
@@ -13,7 +12,7 @@ function Bouton() {
   const [borderSize, setBorderSize] = useState(1);
   const [isShadowEnabled, setIsShadowEnabled] = useState(false);
   const [isAnimationEnabled, setIsAnimationEnabled] = useState('');
-  const [activeAnimationButton, setActiveAnimationButton] = useState(''); // حالة لتتبع الزر النشط
+  const [lastSelectedAnimation, setLastSelectedAnimation] = useState('shake'); // "shake" كافتراضي
 
   // State variables for Pop-up button
   const [popupButtonTitle, setPopupButtonTitle] = useState("commondes");
@@ -27,8 +26,17 @@ function Bouton() {
 
   // Handle animation for both the main and pop-up buttons
   const handleAnimationChange = (animation) => {
-    setIsAnimationEnabled(animation);
-    setActiveAnimationButton(animation); // تحديث حالة الزر النشط
+    setIsAnimationEnabled(animation);    
+    setLastSelectedAnimation(animation); // حفظ الرسوم المتحركة النشطة
+  };
+
+  // Handle toggle for animation checkbox
+  const handleAnimationToggle = () => {
+    if (isAnimationEnabled) {
+      setIsAnimationEnabled('');  // إطفاء الرسوم المتحركة
+    } else {
+      setIsAnimationEnabled(lastSelectedAnimation); // إعادة تفعيل آخر أنيميشن تم اختياره أو "shake" الافتراضي
+    }
   };
 
   return (
@@ -107,7 +115,7 @@ function Bouton() {
               />
             </div>
             <div className="input-group">
-              <label>CONCAVITÉ DE BORDURE</label>
+              <label>CONCAVITÉ DE LA BORDURE</label>
               <input 
                 type="number" 
                 value={borderConcavity} 
@@ -144,7 +152,7 @@ function Bouton() {
                 <input 
                   type="checkbox" 
                   checked={isAnimationEnabled !== ''}
-                  onChange={() => setIsAnimationEnabled(isAnimationEnabled ? '' : 'shake')} 
+                  onChange={handleAnimationToggle} 
                 />
                 <span className="slider"></span>
               </label>
@@ -153,31 +161,31 @@ function Bouton() {
 
           <div className="animation-buttons">
             <button
-              className={`animation-button ${isAnimationEnabled === 'shake' ? 'shake' : ''} ${activeAnimationButton === 'shake' ? 'active' : ''}`}
+              className={`animation-button ${isAnimationEnabled === 'shake' ? 'shake' : ''} ${lastSelectedAnimation === 'shake' ? 'active' : ''}`}
               onClick={() => handleAnimationChange('shake')}
             >
               Shake
             </button>
             <button
-              className={`animation-button ${isAnimationEnabled === 'bounce' ? 'bounce' : ''} ${activeAnimationButton === 'bounce' ? 'active' : ''}`}
+              className={`animation-button ${isAnimationEnabled === 'bounce' ? 'bounce' : ''} ${lastSelectedAnimation === 'bounce' ? 'active' : ''}`}
               onClick={() => handleAnimationChange('bounce')}
             >
               Bounce
             </button>
             <button
-              className={`animation-button ${isAnimationEnabled === 'tada' ? 'tada' : ''} ${activeAnimationButton === 'tada' ? 'active' : ''}`}
+              className={`animation-button ${isAnimationEnabled === 'tada' ? 'tada' : ''} ${lastSelectedAnimation === 'tada' ? 'active' : ''}`}
               onClick={() => handleAnimationChange('tada')}
             >
               Tada
             </button>
             <button
-              className={`animation-button ${isAnimationEnabled === 'flicker' ? 'flicker' : ''} ${activeAnimationButton === 'flicker' ? 'active' : ''}`}
+              className={`animation-button ${isAnimationEnabled === 'flicker' ? 'flicker' : ''} ${lastSelectedAnimation === 'flicker' ? 'active' : ''}`}
               onClick={() => handleAnimationChange('flicker')}
             >
               Flicker
             </button>
             <button
-              className={`animation-button ${isAnimationEnabled === 'squeeze' ? 'squeeze' : ''} ${activeAnimationButton === 'squeeze' ? 'active' : ''}`}
+              className={`animation-button ${isAnimationEnabled === 'squeeze' ? 'squeeze' : ''} ${lastSelectedAnimation === 'squeeze' ? 'active' : ''}`}
               onClick={() => handleAnimationChange('squeeze')}
             >
               Squeeze
@@ -317,18 +325,13 @@ function Bouton() {
             borderColor: popupButtonBorderColor,
             borderRadius: `${popupBorderConcavity}px`,
             borderWidth: `${popupBorderSize}px`,
-            boxShadow: isShadowEnabled ? '2px 2px 10px rgba(0, 0, 0, 0.2)' : 'none',  // تطبيق الظل إن كان مفعلاً
+            boxShadow: isShadowEnabled ? '2px 2px 10px rgba(0, 0, 0, 0.2)' : 'none',
           }}
         >
           {popupButtonTitle}
         </button>
       </div>
     </div>
-  );
-}
-
-export default Bouton;
-
   );
 }
 
