@@ -1,0 +1,400 @@
+/* ملف CSS: Preferences.css */
+.preferences-page {
+  background: linear-gradient(180deg, #0C1015 0%, #151D23 54%, #0C1015 100%);
+  padding: 20px;
+}
+
+.navbar {
+  background-color: #fff;
+  border-radius: 30px;
+  width: 1431px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+.nav-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  width: 129px;
+  height: 42px;
+  font-size: 17px;
+  font-family: 'Alice', serif;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.preferences-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.form-preview {
+  width: 505px;
+  height: 700px;
+  background-color: #fff;
+  border-radius: 30px;
+  border: 2px solid #000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* محاذاة أفقية في المنتصف */
+  justify-content: center; /* محاذاة رأسية في المنتصف */
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* محاذاة أفقية للعناصر */
+}
+
+.form-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center; /* محاذاة العنوان في المنتصف */
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%; /* عرض كامل للمجموعة */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* محاذاة أفقية للعناصر */
+}
+
+.form-label {
+  font-size: 15px;
+  display: block;
+  margin-bottom: 5px;
+  text-align: center; /* محاذاة العنوان في المنتصف */
+}
+
+.form-input {
+  width: 368px;
+  height: 50px;
+  border-radius: 30px;
+  border: 1px solid #000;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+.quantity-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.quantity-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quantity {
+  font-size: 18px;
+}
+
+.send-orders-button {
+  width: 100%;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.customization-panels {
+  width: 995px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.panel-a {
+  height: 310px;
+}
+
+.panel-title {
+  font-size: 20px;
+  font-family: 'K2D', serif;
+  color: #000;
+  text-align: center; /* محاذاة العنوان في المنتصف */
+}
+
+.color-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* محاذاة أفقية للعناصر */
+}
+
+.color-picker label,
+.size-picker label {
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  display: block;
+  margin-bottom: 5px;
+  text-align: center; /* محاذاة العنوان في المنتصف */
+}
+
+.color-picker input,
+.size-picker input {
+  width: 157px;
+  height: 37px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+}
+
+.panel-b {
+  width: 847px;
+  height: 125px;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panel-header {
+  height: 37px;
+}
+
+.panel-title {
+  font-size: 20px;
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  text-align: center; /* محاذاة العنوان في المنتصف */
+}
+
+.panel-content {
+  height: 87px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-group-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inline-label {
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  margin-bottom: 9px; /* المسافة بين العنوان والخانة */
+}
+
+.inline-input {
+  height: 37px;
+  border-radius: 15px;
+  border: 1px solid #000;
+  padding: 5px;
+}
+
+.form-group-inline:first-child {
+  margin-left: 32px; /* المسافة من الحافة اليسرى */
+}
+
+.form-group-inline:last-child {
+  margin-right: 56px; /* المسافة من الحافة اليمنى */
+}
+
+
+.panel-h {
+  width: 847px;
+  height: 141px;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panel-header {
+  height: 38px;
+}
+
+.panel-title {
+  font-size: 20px;
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  text-align: center; /* محاذاة العنوان في المنتصف */
+}
+
+.panel-content {
+  height: 103px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-group-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inline-label {
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  margin-bottom: 17px; /* المسافة بين العنوان والخانة */
+}
+
+.inline-input {
+  height: 37px;
+  border-radius: 15px;
+  border: 1px solid #000;
+  padding: 5px;
+}
+
+.form-group-inline:first-child {
+  margin-left: 38px; /* المسافة من الحافة اليسرى */
+}
+
+.form-group-inline:last-child {
+  margin-right: 58px; /* المسافة من الحافة اليمنى */
+}
+
+.panel-kh {
+  width: 847px;
+  height: 475px;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  height: 55px;
+}
+
+.panel-title {
+  font-size: 20px;
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.panel-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantity-section .form-group-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inline-label {
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.inline-input {
+  height: 37px;
+  border-radius: 15px;
+  border: 1px solid #000;
+  padding: 5px;
+}
+
+.style-section {
+  text-align: center;
+}
+
+.style-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.switch-label {
+  font-size: 11px;
+  color: #000;
+}
+
+.switch {
+  width: 33px;
+  height: 14px;
+  border-radius: 30px;
+  background-color: #929292;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch input[type="checkbox"] {
+  display: none;
+}
+
+.switch .toggle {
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.switch input[type="checkbox"]:checked + .toggle {
+  left: 19px;
+  background-color: #334560;
+}
+
+.quantity-preview {
+  margin-top: 10px;
+}
+
+.quantity-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quantity {
+  font-size: 18px;
+}
