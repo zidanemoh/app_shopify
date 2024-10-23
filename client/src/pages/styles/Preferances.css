@@ -1,9 +1,10 @@
 .page-container {
   display: flex;
-  flex-direction: column; /* جعل الصفحة تبدأ بشكل عمودي */
+  flex-direction: column;
   align-items: center;
-  background-color: #121212;
+  background: linear-gradient(180deg, #0C1015 0%, #151D23 54%, #0C1015 100%);
   padding: 30px;
+  min-height: 100vh; /* يغطي الشاشة بالكامل */
 }
 
 .navbar {
@@ -40,18 +41,16 @@
   cursor: pointer;
 }
 
-
-
 .form-panel {
-  width: 850px;
-  height: 250px;
+  width: 850px; /* نفس عرض لوحة التحكم في العنوان */
   padding: 20px;
   background-color: #FFFFFF;
   border-radius: 30px;
   border: 1px solid #CCCCCC;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 أعمدة متساوية العرض */
+  grid-template-columns: repeat(4, 1fr); /* تقسيم اللوحة إلى 4 أعمدة */
   grid-gap: 20px; /* مسافة بين العناصر */
+  align-self: flex-start; /* تثبيت اللوحات على اليسار */
 }
 
 .panel-title {
@@ -61,7 +60,6 @@
   margin-bottom: 20px;
   text-align: center; /* محاذاة النص إلى المركز */
   margin-top: 0px;
-
 }
 
 .panel-control .color-picker {
@@ -92,9 +90,7 @@
   font-size: 16px;
   color: #000000;
   margin-bottom: 8px;
-
 }
-
 
 .color-picker,
 .size-input {
@@ -103,9 +99,7 @@
   border-radius: 10px;
   border: 1px solid #E2E2E2;
   margin-top: 8px; /* إضافة مسافة صغيرة بين العنوان والمدخل */
-
 }
-
 
 .order-form {
   background-color: #292929;
@@ -134,14 +128,20 @@
   display: block; /* تأكيد عرض العنصر ككتلة ليتحكم بمحاذاة النص */
 }
 
-
 .order-form .form-group .form-control {
   width: 100%;
   height: 40px;
   padding: 0px;
-  padding-right:0px ;
+  padding-right: 0px;
   border-radius: 10px;
   border: 1px solid #E2E2E2;
+}
+
+.form-and-order {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .quantity-control {
@@ -185,30 +185,16 @@
   background-color: #F0F0F0; /* خلفية مطابقة للخانات الأخرى */
 }
 
-
 .content-container {
   display: flex;
-  flex-direction: row; /* توزيع أفقي للوحات التحكم */
-  justify-content: space-between; /* توزيع المساحة بشكل متساوي */
+  flex-direction: column; /* تغيير الاتجاه إلى عمودي */
   width: 100%;
-  gap: 10px; /* مسافة بين اللوحات */
-}
-
-.form-panel {
-  width: 850px; /* نفس عرض لوحة التحكم في العنوان */
-  padding: 20px;
-  background-color: #FFFFFF;
-  border-radius: 30px;
-  border: 1px solid #CCCCCC;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* تقسيم اللوحة إلى 4 أعمدة */
-  grid-gap: 20px; /* مسافة بين العناصر */
-  align-self: flex-start; /* تثبيت اللوحات على اليسار */
-  
+  gap: 20px; /* مسافة بين اللوحات */
+  align-items: center; /* محاذاة العناصر في المركز */
 }
 
 .title-control-panel {
-  width: 850px; /* تأكد من تطابق العرض */
+  width: 850px; /* نفس عرض لوحة التحكم في العنوان */
   padding: 20px;
   background-color: #FFFFFF;
   border-radius: 30px;
@@ -217,6 +203,17 @@
   grid-template-columns: 2fr 1fr 1fr; /* تخصيص الأعمدة */
   grid-gap: 20px;
   align-self: flex-start; /* تثبيت اللوحة على اليسار */
+  margin-top: -300px;
+}
+
+.title-control-panel .panel-control .color-picker {
+  width: 90%; /* اجعل العرض متوافقًا مع الحقول الأخرى */
+  padding: 10px; /* مسافة داخلية */
+  border-radius: 20px; /* نفس الحواف */
+  border: 1px solid #E2E2E2; /* نفس الحدود */
+  height: 42px; /* اجعل الارتفاع متوافقًا مع الحقول الأخرى */
+  background-color: #F0F0F0; /* خلفية مطابقة */
+  appearance: none; /* إزالة الأنماط الافتراضية */
 }
 
 .title-control-panel .panel-title {
@@ -226,9 +223,36 @@
   margin-bottom: 20px;
 }
 
-.title-control-panel .panel-control {
-  display: flex;
-  flex-direction: column;
+.title-control-panel .panel-control .color-picker::-webkit-color-swatch {
+  border-radius: 20px; /* نفس حواف حقول الألوان في النموذج */
+  border: none;
+}
+
+.title-control-panel .panel-control .form-control {
+  height: 50px; /* ارتفاع أعلى للحقل */
+  font-size: 16px; /* تكبير حجم النص ليكون واضحًا */
+}
+
+.title-control-panel .panel-control .color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 20px;
+}
+
+.title-control-panel .panel-control .size-input {
+  height: 50px; /* ارتفاع يتناسب مع التصميم */
+  font-size: 16px; /* حجم النص */
+  text-align: center; /* محاذاة الرقم في الوسط */
+}
+
+.title-control-panel .panel-control input {
+  border: 1px solid #CCCCCC; /* ضبط لون الحدود */
+  border-radius: 30px; /* تعديل الزوايا */
+}
+
+.title-control-panel .panel-control input:focus {
+  outline: none; /* إزالة الخط الأزرق الافتراضي */
+  border: 1px solid #000000; /* تغيير لون الحدود عند التفاعل */
+  background-color: #FFFFFF; /* جعل الخلفية بيضاء عند التفاعل */
 }
 
 .title-control-panel .panel-control label {
@@ -237,11 +261,24 @@
   margin-bottom: 5px;
 }
 
-.title-control-panel .form-control,
-.title-control-panel .color-picker,
-.title-control-panel .size-input {
-  width: 100%;
+.title-control-panel .panel-control .size-input {
+  width: 90%;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 20px; /* تطابق حواف الحقول */
   border: 1px solid #E2E2E2;
+  background-color: #F0F0F0; /* نفس خلفية الحقول في لوحة تحكم النموذج */
+  height: 20px; /* نفس الارتفاع المستخدم في خانات النموذج */
 }
+
+
+.title-control-panel .panel-control .form-control {
+  width: 90%;
+  padding: 10px;
+  border-radius: 20px; /* تطابق حواف الحقول */
+  border: 1px solid #E2E2E2;
+  background-color: #F0F0F0; /* نفس خلفية الحقول في لوحة تحكم النموذج */
+  height: 20px; /* نفس الارتفاع المستخدم في خانات النموذج */
+  margin-top: 8px;
+}
+
+
