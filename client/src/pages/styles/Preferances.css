@@ -4,7 +4,7 @@
   align-items: center;
   background: linear-gradient(180deg, #0C1015 0%, #151D23 54%, #0C1015 100%);
   padding: 30px;
-  min-height: 100vh; /* يغطي الشاشة بالكامل */
+  min-height: 100vh;
 }
 
 .navbar {
@@ -14,7 +14,7 @@
   background-color: #ffffff;
   padding: 10px 20px;
   border-radius: 30px;
-  margin-bottom: 30px; /* إضافة مسافة أسفل الشريط */
+  margin-bottom: 30px;
 }
 
 .nav-item.home-icon {
@@ -41,50 +41,68 @@
   cursor: pointer;
 }
 
-.form-panel {
-  width: 850px; /* نفس عرض لوحة التحكم في العنوان */
+.main-content-container {
+  display: flex;
+  width: 100%;
+  gap: 80px;
+
+}
+
+.control-panel-column,
+.order-form-column {
+  flex: 1;
+}
+
+.form-panel,
+.title-control-panel {
+  width: 850px;
   padding: 20px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 30px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* تقسيم اللوحة إلى 4 أعمدة */
-  grid-gap: 20px; /* مسافة بين العناصر */
-  align-self: flex-start; /* تثبيت اللوحات على اليسار */
+  grid-gap: 20px;
+  margin-bottom: 40PX;
+}
+
+.form-panel {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.title-control-panel {
+  grid-template-columns: 2fr 1fr 1fr;
 }
 
 .panel-title {
-  grid-column: span 4; /* يمتد العنوان على الأعمدة الأربعة */
+  grid-column: span 4;
   font-size: 24px;
   color: #000000;
-  margin-bottom: 20px;
-  text-align: center; /* محاذاة النص إلى المركز */
-  margin-top: 0px;
+  text-align: center;
+  margin: 0 0 20px 0;
 }
 
 .panel-control .color-picker {
-  width: 100%; /* عرض كامل للخانة */
-  height: 40px; /* ارتفاع مناسب */
+  width: 100%;
+  height: 40px;
   padding: 0;
   border-radius: 20px;
-  border: 1px solid #E2E2E2;
-  background-color: transparent; /* نبدأ بخلفية شفافة */
-  appearance: none; /* إزالة الأنماط الافتراضية */
+  border: 1px solid #e2e2e2;
+  background-color: transparent;
+  appearance: none;
 }
 
 .panel-control .color-picker::-webkit-color-swatch {
-  border-radius: 10px; /* لجعل الزوايا مستديرة */
+  border-radius: 10px;
   border: none;
 }
 
-.panel-control .color-picker::-webkit-color-swatch-wrapper {
-  padding: 0;
-  border-radius: 10px; /* لجعل الزوايا مستديرة */
+.panel-header {
+  display: flex;
+  justify-content: space-between; /* تباعد بين العنوان وزر التشغيل */
+  align-items: center; /* محاذاة العناصر عموديًا */
+  grid-column: span 4; /* امتداد العرض ليشمل الأعمدة الأربعة */
 }
 
-.panel-control .color-picker:hover {
-  cursor: pointer; /* تغيير المؤشر عند التمرير */
-}
 
 .panel-control label {
   font-size: 16px;
@@ -92,27 +110,25 @@
   margin-bottom: 8px;
 }
 
-.color-picker,
-.size-input {
-  width: 100%; /* عرض كامل للمدخلات */
+.panel-control input {
+  width: 90%;
   padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #E2E2E2;
-  margin-top: 8px; /* إضافة مسافة صغيرة بين العنوان والمدخل */
+  border-radius: 20px;
+  border: 1px solid #e2e2e2;
+  margin-top: 8px;
 }
 
 .order-form {
   background-color: #292929;
   padding: 20px;
   border-radius: 30px;
-  border: 1px solid #FFFFFF;
-  width: 400px;
-  align-self: flex-start; /* لضمان محاذاة النموذج لبداية الصفحة */
+  border: 1px solid #ffffff;
+  margin-top: 20px;
 }
 
 .order-form .form-title {
   font-size: 24px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -121,27 +137,19 @@
 }
 
 .order-form .form-group label {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 16px;
   margin-bottom: 5px;
-  text-align: left; /* ضبط المحاذاة للنص إلى اليسار */
-  display: block; /* تأكيد عرض العنصر ككتلة ليتحكم بمحاذاة النص */
+  text-align: left;
+  display: block;
 }
 
 .order-form .form-group .form-control {
   width: 100%;
   height: 40px;
   padding: 0px;
-  padding-right: 0px;
   border-radius: 10px;
-  border: 1px solid #E2E2E2;
-}
-
-.form-and-order {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
+  border: 1px solid #e2e2e2;
 }
 
 .quantity-control {
@@ -162,7 +170,7 @@
 
 .quantity-control .quantity-value {
   font-size: 18px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .submit-btn {
@@ -177,108 +185,64 @@
 }
 
 .size-input {
-  width: 90%; /* نفس عرض الخانات الأخرى */
-  height: 20px; /* نفس الارتفاع المستخدم في الخانات الأخرى */
+  width: 90%;
+  height: 20px;
   padding: 10px;
-  border-radius: 20px; /* تعديل الحواف لتكون 20px */
-  border: 1px solid #E2E2E2;
-  background-color: #F0F0F0; /* خلفية مطابقة للخانات الأخرى */
-}
-
-.content-container {
-  display: flex;
-  flex-direction: column; /* تغيير الاتجاه إلى عمودي */
-  width: 100%;
-  gap: 20px; /* مسافة بين اللوحات */
-  align-items: center; /* محاذاة العناصر في المركز */
-}
-
-.title-control-panel {
-  width: 850px; /* نفس عرض لوحة التحكم في العنوان */
-  padding: 20px;
-  background-color: #FFFFFF;
-  border-radius: 30px;
-  border: 1px solid #CCCCCC;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* تخصيص الأعمدة */
-  grid-gap: 20px;
-  align-self: flex-start; /* تثبيت اللوحة على اليسار */
-  margin-top: -300px;
-}
-
-.title-control-panel .panel-control .color-picker {
-  width: 90%; /* اجعل العرض متوافقًا مع الحقول الأخرى */
-  padding: 10px; /* مسافة داخلية */
-  border-radius: 20px; /* نفس الحواف */
-  border: 1px solid #E2E2E2; /* نفس الحدود */
-  height: 42px; /* اجعل الارتفاع متوافقًا مع الحقول الأخرى */
-  background-color: #F0F0F0; /* خلفية مطابقة */
-  appearance: none; /* إزالة الأنماط الافتراضية */
-}
-
-.title-control-panel .panel-title {
-  grid-column: span 3;
-  font-size: 24px;
-  color: #000000;
-  margin-bottom: 20px;
-}
-
-.title-control-panel .panel-control .color-picker::-webkit-color-swatch {
-  border-radius: 20px; /* نفس حواف حقول الألوان في النموذج */
-  border: none;
-}
-
-.title-control-panel .panel-control .form-control {
-  height: 50px; /* ارتفاع أعلى للحقل */
-  font-size: 16px; /* تكبير حجم النص ليكون واضحًا */
-}
-
-.title-control-panel .panel-control .color-picker::-webkit-color-swatch-wrapper {
-  padding: 0;
   border-radius: 20px;
+  border: 1px solid #e2e2e2;
+  background-color: #f0f0f0;
 }
 
-.title-control-panel .panel-control .size-input {
-  height: 50px; /* ارتفاع يتناسب مع التصميم */
-  font-size: 16px; /* حجم النص */
-  text-align: center; /* محاذاة الرقم في الوسط */
+.switch-container-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.title-control-panel .panel-control input {
-  border: 1px solid #CCCCCC; /* ضبط لون الحدود */
-  border-radius: 30px; /* تعديل الزوايا */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 59px;
+  height: 26px;
+  margin-left: 10px;
 }
 
-.title-control-panel .panel-control input:focus {
-  outline: none; /* إزالة الخط الأزرق الافتراضي */
-  border: 1px solid #000000; /* تغيير لون الحدود عند التفاعل */
-  background-color: #FFFFFF; /* جعل الخلفية بيضاء عند التفاعل */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-.title-control-panel .panel-control label {
-  font-size: 16px;
-  color: #000000;
-  margin-bottom: 5px;
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d0d0d0;
+  border-radius: 20px;
+  transition: 0.4s;
 }
 
-.title-control-panel .panel-control .size-input {
-  width: 90%;
-  padding: 10px;
-  border-radius: 20px; /* تطابق حواف الحقول */
-  border: 1px solid #E2E2E2;
-  background-color: #F0F0F0; /* نفس خلفية الحقول في لوحة تحكم النموذج */
-  height: 20px; /* نفس الارتفاع المستخدم في خانات النموذج */
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: white;
+  transition: 0.4s;
+  left: 3px;
+  bottom: 3px;
 }
 
+input:checked + .slider {
+  background-color: #253452;
+}
 
-.title-control-panel .panel-control .form-control {
-  width: 90%;
-  padding: 10px;
-  border-radius: 20px; /* تطابق حواف الحقول */
-  border: 1px solid #E2E2E2;
-  background-color: #F0F0F0; /* نفس خلفية الحقول في لوحة تحكم النموذج */
-  height: 20px; /* نفس الارتفاع المستخدم في خانات النموذج */
-  margin-top: 8px;
+input:checked + .slider:before {
+  transform: translateX(32px);
 }
 
 
