@@ -1,400 +1,247 @@
-/* ملف CSS: Preferences.css */
-.preferences-page {
-  background: linear-gradient(180deg, #0C1015 0%, #151D23 54%, #0C1015 100%);
-  padding: 20px;
+.page-container {
+  display: flex;
+  flex-direction: column; /* جعل الصفحة تبدأ بشكل عمودي */
+  align-items: center;
+  background-color: #121212;
+  padding: 30px;
 }
 
 .navbar {
-  background-color: #fff;
-  border-radius: 30px;
-  width: 1431px;
-  height: 48px;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 20px;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #ffffff;
   padding: 10px 20px;
+  border-radius: 30px;
+  margin-bottom: 30px; /* إضافة مسافة أسفل الشريط */
 }
 
-.nav-button {
+.nav-item.home-icon {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item img {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  border: none;
   background-color: #000;
   color: #fff;
-  border: none;
-  border-radius: 30px;
-  width: 129px;
-  height: 42px;
-  font-size: 17px;
-  font-family: 'Alice', serif;
+  border-radius: 20px;
   cursor: pointer;
-  margin: 0 10px;
 }
 
-.preferences-container {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
 
-.form-preview {
-  width: 505px;
-  height: 700px;
-  background-color: #fff;
-  border-radius: 30px;
-  border: 2px solid #000;
+
+.form-panel {
+  width: 850px;
+  height: 250px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* محاذاة أفقية في المنتصف */
-  justify-content: center; /* محاذاة رأسية في المنتصف */
-}
-
-.form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* محاذاة أفقية للعناصر */
-}
-
-.form-title {
-  font-size: 20px;
-  margin-bottom: 20px;
-  text-align: center; /* محاذاة العنوان في المنتصف */
-}
-
-.form-group {
-  margin-bottom: 15px;
-  width: 100%; /* عرض كامل للمجموعة */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* محاذاة أفقية للعناصر */
-}
-
-.form-label {
-  font-size: 15px;
-  display: block;
-  margin-bottom: 5px;
-  text-align: center; /* محاذاة العنوان في المنتصف */
-}
-
-.form-input {
-  width: 368px;
-  height: 50px;
+  background-color: #FFFFFF;
   border-radius: 30px;
-  border: 1px solid #000;
-  padding: 10px;
-  background-color: #f5f5f5;
+  border: 1px solid #CCCCCC;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 أعمدة متساوية العرض */
+  grid-gap: 20px; /* مسافة بين العناصر */
 }
 
-.quantity-group {
+.panel-title {
+  grid-column: span 4; /* يمتد العنوان على الأعمدة الأربعة */
+  font-size: 24px;
+  color: #000000;
+  margin-bottom: 20px;
+  text-align: center; /* محاذاة النص إلى المركز */
+  margin-top: 0px;
+
+}
+
+.panel-control .color-picker {
+  width: 100%; /* عرض كامل للخانة */
+  height: 40px; /* ارتفاع مناسب */
+  padding: 0;
+  border-radius: 20px;
+  border: 1px solid #E2E2E2;
+  background-color: transparent; /* نبدأ بخلفية شفافة */
+  appearance: none; /* إزالة الأنماط الافتراضية */
+}
+
+.panel-control .color-picker::-webkit-color-swatch {
+  border-radius: 10px; /* لجعل الزوايا مستديرة */
+  border: none;
+}
+
+.panel-control .color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 10px; /* لجعل الزوايا مستديرة */
+}
+
+.panel-control .color-picker:hover {
+  cursor: pointer; /* تغيير المؤشر عند التمرير */
+}
+
+.panel-control label {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 8px;
+
+}
+
+
+.color-picker,
+.size-input {
+  width: 100%; /* عرض كامل للمدخلات */
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #E2E2E2;
+  margin-top: 8px; /* إضافة مسافة صغيرة بين العنوان والمدخل */
+
+}
+
+
+.order-form {
+  background-color: #292929;
+  padding: 20px;
+  border-radius: 30px;
+  border: 1px solid #FFFFFF;
+  width: 400px;
+  align-self: flex-start; /* لضمان محاذاة النموذج لبداية الصفحة */
+}
+
+.order-form .form-title {
+  font-size: 24px;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.order-form .form-group {
+  margin-bottom: 15px;
+}
+
+.order-form .form-group label {
+  color: #FFFFFF;
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-align: left; /* ضبط المحاذاة للنص إلى اليسار */
+  display: block; /* تأكيد عرض العنصر ككتلة ليتحكم بمحاذاة النص */
+}
+
+
+.order-form .form-group .form-control {
+  width: 100%;
+  height: 40px;
+  padding: 0px;
+  padding-right:0px ;
+  border-radius: 10px;
+  border: 1px solid #E2E2E2;
+}
+
+.quantity-control {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
   margin: 20px 0;
 }
 
-.quantity-button {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  background-color: #000;
+.quantity-control .quantity-btn {
+  background-color: #444;
   color: #fff;
-  font-size: 16px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.quantity {
+.quantity-control .quantity-value {
   font-size: 18px;
+  color: #FFFFFF;
 }
 
-.send-orders-button {
+.submit-btn {
   width: 100%;
-  height: 50px;
-  border-radius: 30px;
-  background-color: #333;
-  color: #fff;
+  padding: 15px;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
   border: none;
-  cursor: pointer;
-}
-
-.customization-panels {
-  width: 995px;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
-.panel {
-  margin-bottom: 20px;
-  background-color: #fff;
   border-radius: 30px;
-  padding: 20px;
-}
-
-.panel-a {
-  height: 310px;
-}
-
-.panel-title {
-  font-size: 20px;
-  font-family: 'K2D', serif;
-  color: #000;
-  text-align: center; /* محاذاة العنوان في المنتصف */
-}
-
-.color-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* محاذاة أفقية للعناصر */
-}
-
-.color-picker label,
-.size-picker label {
-  font-size: 11px;
-  font-family: 'Inter', sans-serif;
-  color: #000;
-  display: block;
-  margin-bottom: 5px;
-  text-align: center; /* محاذاة العنوان في المنتصف */
-}
-
-.color-picker input,
-.size-picker input {
-  width: 157px;
-  height: 37px;
-  border-radius: 30px;
-  border: 1px solid #ccc;
-}
-
-.panel-b {
-  width: 847px;
-  height: 125px;
-  background-color: #fff;
-  border-radius: 30px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.panel-header {
-  height: 37px;
-}
-
-.panel-title {
-  font-size: 20px;
-  color: #000;
-  font-family: 'Inter', sans-serif;
-  text-align: center; /* محاذاة العنوان في المنتصف */
-}
-
-.panel-content {
-  height: 87px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.form-group-inline {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.inline-label {
-  font-size: 11px;
-  font-family: 'Inter', sans-serif;
-  color: #000;
-  margin-bottom: 9px; /* المسافة بين العنوان والخانة */
-}
-
-.inline-input {
-  height: 37px;
-  border-radius: 15px;
-  border: 1px solid #000;
-  padding: 5px;
-}
-
-.form-group-inline:first-child {
-  margin-left: 32px; /* المسافة من الحافة اليسرى */
-}
-
-.form-group-inline:last-child {
-  margin-right: 56px; /* المسافة من الحافة اليمنى */
-}
-
-
-.panel-h {
-  width: 847px;
-  height: 141px;
-  background-color: #fff;
-  border-radius: 30px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.panel-header {
-  height: 38px;
-}
-
-.panel-title {
-  font-size: 20px;
-  color: #000;
-  font-family: 'Inter', sans-serif;
-  text-align: center; /* محاذاة العنوان في المنتصف */
-}
-
-.panel-content {
-  height: 103px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.form-group-inline {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.inline-label {
-  font-size: 11px;
-  font-family: 'Inter', sans-serif;
-  color: #000;
-  margin-bottom: 17px; /* المسافة بين العنوان والخانة */
-}
-
-.inline-input {
-  height: 37px;
-  border-radius: 15px;
-  border: 1px solid #000;
-  padding: 5px;
-}
-
-.form-group-inline:first-child {
-  margin-left: 38px; /* المسافة من الحافة اليسرى */
-}
-
-.form-group-inline:last-child {
-  margin-right: 58px; /* المسافة من الحافة اليمنى */
-}
-
-.panel-kh {
-  width: 847px;
-  height: 475px;
-  background-color: #fff;
-  border-radius: 30px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.panel-header {
-  height: 55px;
-}
-
-.panel-title {
-  font-size: 20px;
-  color: #000;
-  font-family: 'Inter', sans-serif;
-  text-align: center;
-}
-
-.panel-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.quantity-section .form-group-inline {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.inline-label {
-  font-size: 11px;
-  font-family: 'Inter', sans-serif;
-  color: #000;
-  margin-bottom: 10px;
-}
-
-.inline-input {
-  height: 37px;
-  border-radius: 15px;
-  border: 1px solid #000;
-  padding: 5px;
-}
-
-.style-section {
-  text-align: center;
-}
-
-.style-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.switch-label {
-  font-size: 11px;
-  color: #000;
-}
-
-.switch {
-  width: 33px;
-  height: 14px;
-  border-radius: 30px;
-  background-color: #929292;
-  position: relative;
-  cursor: pointer;
-}
-
-.switch input[type="checkbox"] {
-  display: none;
-}
-
-.switch .toggle {
-  width: 14px;
-  height: 14px;
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: all 0.3s;
-}
-
-.switch input[type="checkbox"]:checked + .toggle {
-  left: 19px;
-  background-color: #334560;
-}
-
-.quantity-preview {
-  margin-top: 10px;
-}
-
-.quantity-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.quantity-button {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  background-color: #000;
   color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.quantity {
   font-size: 18px;
+  cursor: pointer;
+}
+
+.size-input {
+  width: 90%; /* نفس عرض الخانات الأخرى */
+  height: 20px; /* نفس الارتفاع المستخدم في الخانات الأخرى */
+  padding: 10px;
+  border-radius: 20px; /* تعديل الحواف لتكون 20px */
+  border: 1px solid #E2E2E2;
+  background-color: #F0F0F0; /* خلفية مطابقة للخانات الأخرى */
+}
+
+
+.content-container {
+  display: flex;
+  flex-direction: row; /* توزيع أفقي للوحات التحكم */
+  justify-content: space-between; /* توزيع المساحة بشكل متساوي */
+  width: 100%;
+  gap: 10px; /* مسافة بين اللوحات */
+}
+
+.form-panel {
+  width: 850px; /* نفس عرض لوحة التحكم في العنوان */
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 30px;
+  border: 1px solid #CCCCCC;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* تقسيم اللوحة إلى 4 أعمدة */
+  grid-gap: 20px; /* مسافة بين العناصر */
+  align-self: flex-start; /* تثبيت اللوحات على اليسار */
+  
+}
+
+.title-control-panel {
+  width: 850px; /* تأكد من تطابق العرض */
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 30px;
+  border: 1px solid #CCCCCC;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* تخصيص الأعمدة */
+  grid-gap: 20px;
+  align-self: flex-start; /* تثبيت اللوحة على اليسار */
+}
+
+.title-control-panel .panel-title {
+  grid-column: span 3;
+  font-size: 24px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.title-control-panel .panel-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-control-panel .panel-control label {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.title-control-panel .form-control,
+.title-control-panel .color-picker,
+.title-control-panel .size-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #E2E2E2;
 }
