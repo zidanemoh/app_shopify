@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/Preferances.css'; 
+import './styles/Preferances.css';
 
 function App() {
   // حالة لإدارة قيم الألوان والأحجام
@@ -14,36 +14,46 @@ function App() {
   const [formTitle, setFormTitle] = useState("ORDER FORMS");
   const [titleColor, setTitleColor] = useState("#FFFFFF");
   const [titleSize, setTitleSize] = useState(2);
-  const [isTitleVisible, setIsTitleVisible] = useState(true); // حالة لعرض العنوان
+  const [isTitleVisible, setIsTitleVisible] = useState(true);
 
-  // دالة لتحديث القيم اللونية
+  // إدارة الحالة للعنوان الفرعي
+  const [subTitle, setSubTitle] = useState("Both titles can be removed/edited");
+  const [subTitleColor, setSubTitleColor] = useState("#FFFFFF");
+  const [subTitleSize, setSubTitleSize] = useState(1);
+  const [isSubTitleVisible, setIsSubTitleVisible] = useState(true);
+
+  // إدارة حالة لوحة التحكم في الكمية
+  const [qtyTitle, setQtyTitle] = useState("QTY:");
+  const [qtyFieldColor, setQtyFieldColor] = useState("#E7E7E7");
+  const [qtyBtnColor, setQtyBtnColor] = useState("#000000");
+  const [qtyBorderRadius, setQtyBorderRadius] = useState(30);
+  const [qtyValue, setQtyValue] = useState(2);
+
   const handleColorChange = (setter, event) => {
     setter(event.target.value);
   };
+
+  // دالة لتغيير القيمة
+  const increaseQty = () => setQtyValue(qtyValue + 1);
+  const decreaseQty = () => setQtyValue(qtyValue > 0 ? qtyValue - 1 : 0);
 
   return (
     <div className="page-container">
       {/* شريط التنقل */}
       <nav className="navbar">
-        <div className="nav-item home-icon">
-          <img src="/path/to/home-icon.png" alt="Home Icon" />
-        </div>
-        <div className="nav-menu">
-          <button className="nav-link">Position</button>
-          <button className="nav-link">Champs</button>
-          <button className="nav-link">Bouton</button>
-          <button className="nav-link">Préferences</button>
-          <button className="nav-link">Frais et résumé</button>
-          <button className="nav-link">Features</button>
-          <button className="nav-link">Plans</button>
-        </div>
+        <button className="nav-button home-icon">🏠</button>
+        <button className="nav-button">Position</button>
+        <button className="nav-button">Champs</button>
+        <button className="nav-button">Bouton</button>
+        <button className="nav-button">Preferences</button>
+        <button className="nav-button">frais es resume</button>
+        <button className="nav-button">Features</button>
+        <button className="nav-button">Plans</button>
       </nav>
 
-      {/* الحاوية التي تحتوي على لوحة التحكم والنموذج */}
       <div className="main-content-container">
-        {/* عمود لوحة التحكم */}
         <div className="control-panel-column">
-          {/* لوحة التحكم */}
+          {/* لوحة التحكم في الألوان والخلفيات */}
           <div className="form-panel">
             <div className="panel-header">
               <h2 className="panel-title">Formulaire</h2>
@@ -142,10 +152,10 @@ function App() {
               <h2 className="panel-title">Titre du formulaire</h2>
               <div className="switch-container-right">
                 <label className="switch">
-                  <input 
-                    type="checkbox" 
-                    checked={isTitleVisible} 
-                    onChange={(e) => setIsTitleVisible(e.target.checked)} 
+                  <input
+                    type="checkbox"
+                    checked={isTitleVisible}
+                    onChange={(e) => setIsTitleVisible(e.target.checked)}
                   />
                   <span className="slider"></span>
                 </label>
@@ -153,16 +163,15 @@ function App() {
             </div>
             <div className="panel-control">
               <label htmlFor="formTitle">Titre du formulaire</label>
-              <input 
-                type="text" 
-                id="formTitle" 
-                className="form-control" 
-                placeholder="ORDER FORMS" 
-                value={formTitle} 
-                onChange={(e) => setFormTitle(e.target.value)} 
+              <input
+                type="text"
+                id="formTitle"
+                className="form-control"
+                placeholder="ORDER FORMS"
+                value={formTitle}
+                onChange={(e) => setFormTitle(e.target.value)}
               />
             </div>
-
             <div className="panel-control">
               <label htmlFor="titleColor">couleur</label>
               <input
@@ -174,27 +183,134 @@ function App() {
                 style={{ backgroundColor: titleColor }}
               />
             </div>
-
             <div className="panel-control">
               <label htmlFor="titleSize">Taille</label>
-              <input 
-                type="number" 
-                id="titleSize" 
-                className="size-input" 
-                value={titleSize} 
-                onChange={(e) => setTitleSize(parseInt(e.target.value) || 0)} 
+              <input
+                type="number"
+                id="titleSize"
+                className="size-input"
+                value={titleSize}
+                onChange={(e) => setTitleSize(parseInt(e.target.value) || 0)}
+              />
+            </div>
+          </div>
+
+          {/* لوحة التحكم في العنوان الفرعي */}
+          <div className="title-control-panel">
+            <div className="panel-header">
+              <h2 className="panel-title">Sous-titre du formulaire</h2>
+              <div className="switch-container-right">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={isSubTitleVisible}
+                    onChange={(e) => setIsSubTitleVisible(e.target.checked)}
+                  />
+                  <span className="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div className="panel-control">
+              <label htmlFor="subTitle">Sous-titre du formulaire</label>
+              <input
+                type="text"
+                id="subTitle"
+                className="form-control"
+                placeholder="Both titles can be removed/edited"
+                value={subTitle}
+                onChange={(e) => setSubTitle(e.target.value)}
+              />
+            </div>
+            <div className="panel-control">
+              <label htmlFor="subTitleColor">couleur</label>
+              <input
+                type="color"
+                id="subTitleColor"
+                className="color-picker"
+                value={subTitleColor}
+                onChange={(e) => handleColorChange(setSubTitleColor, e)}
+                style={{ backgroundColor: subTitleColor }}
+              />
+            </div>
+            <div className="panel-control">
+              <label htmlFor="subTitleSize">Taille</label>
+              <input
+                type="number"
+                id="subTitleSize"
+                className="size-input"
+                value={subTitleSize}
+                onChange={(e) => setSubTitleSize(parseInt(e.target.value) || 0)}
+              />
+            </div>
+          </div>
+
+          {/* لوحة التحكم في الكمية */}
+          <div className="quantity-control-panel">
+            <div className="panel-header">
+              <h2 className="panel-title">Quantité</h2>
+              <div className="switch-container-right">
+                <label className="switch">
+                  <input type="checkbox" defaultChecked />
+                  <span className="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div className="panel-control">
+              <label htmlFor="qtyTitle">Titre de Quantité</label>
+              <input
+                type="text"
+                id="qtyTitle"
+                className="form-control"
+                value={qtyTitle}
+                onChange={(e) => setQtyTitle(e.target.value)}
+              />
+            </div>
+            <div className="panel-control">
+              <label htmlFor="qtyFieldColor">Couleur du Fond</label>
+              <input
+                type="color"
+                id="qtyFieldColor"
+                className="color-picker"
+                value={qtyFieldColor}
+                onChange={(e) => handleColorChange(setQtyFieldColor, e)}
+                style={{ backgroundColor: qtyFieldColor }}
+              />
+            </div>
+            <div className="panel-control">
+              <label htmlFor="qtyBtnColor">Couleur</label>
+              <input
+                type="color"
+                id="qtyBtnColor"
+                className="color-picker"
+                value={qtyBtnColor}
+                onChange={(e) => handleColorChange(setQtyBtnColor, e)}
+                style={{ backgroundColor: qtyBtnColor }}
+              />
+            </div>
+            <div className="panel-control">
+              <label htmlFor="qtyBorderRadius">Angle</label>
+              <input
+                type="number"
+                id="qtyBorderRadius"
+                className="size-input"
+                value={qtyBorderRadius}
+                onChange={(e) => setQtyBorderRadius(parseInt(e.target.value) || 0)}
               />
             </div>
           </div>
         </div>
 
-        {/* عمود النموذج */}
         <div className="order-form-column">
           <div className="order-form" style={{ borderRadius: `${borderConcavity}px`, border: `${borderSize}px solid ${borderColor}`, background: `linear-gradient(180deg, ${bgTopColor} 0%, ${bgBottomColor} 100%)` }}>
             {isTitleVisible && (
               <h2 className="form-title" style={{ color: titleColor, fontSize: `${titleSize}rem` }}>
                 {formTitle}
               </h2>
+            )}
+            {isSubTitleVisible && (
+              <h3 className="form-sub-title" style={{ color: subTitleColor, fontSize: `${subTitleSize}rem` }}>
+                {subTitle}
+              </h3>
             )}
             <div className="form-group">
               <label htmlFor="name" style={{ color: labelColor }}>Nom</label>
@@ -213,9 +329,9 @@ function App() {
               <input type="text" id="telephone" className="form-control" placeholder="Numero Téléphone" style={{ backgroundColor: fieldColor }} />
             </div>
             <div className="quantity-control">
-              <button className="quantity-btn">-</button>
-              <span className="quantity-value" style={{ color: iconColor }}>2</span>
-              <button className="quantity-btn">+</button>
+              <button className="quantity-btn" onClick={decreaseQty}>-</button>
+              <span className="quantity-value" style={{ color: iconColor }}>{qtyValue}</span>
+              <button className="quantity-btn" onClick={increaseQty}>+</button>
             </div>
             <button className="submit-btn">send orders</button>
           </div>
