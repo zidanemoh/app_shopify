@@ -16,6 +16,11 @@ function App() {
   const [titleSize, setTitleSize] = useState(2);
   const [isTitleVisible, setIsTitleVisible] = useState(true); // حالة لعرض العنوان
 
+  // دالة لتحديث القيم اللونية
+  const handleColorChange = (setter, event) => {
+    setter(event.target.value);
+  };
+
   return (
     <div className="page-container">
       {/* شريط التنقل */}
@@ -40,7 +45,9 @@ function App() {
         <div className="control-panel-column">
           {/* لوحة التحكم */}
           <div className="form-panel">
-            <h2 className="panel-title">Formulaire</h2>
+            <div className="panel-header">
+              <h2 className="panel-title">Formulaire</h2>
+            </div>
             <div className="panel-control">
               <label htmlFor="bgTopColor">La couleur du haut du fond</label>
               <input
@@ -48,7 +55,8 @@ function App() {
                 id="bgTopColor"
                 className="color-picker"
                 value={bgTopColor}
-                onChange={(e) => setBgTopColor(e.target.value)}
+                onChange={(e) => handleColorChange(setBgTopColor, e)}
+                style={{ backgroundColor: bgTopColor }}
               />
             </div>
             <div className="panel-control">
@@ -58,7 +66,8 @@ function App() {
                 id="bgBottomColor"
                 className="color-picker"
                 value={bgBottomColor}
-                onChange={(e) => setBgBottomColor(e.target.value)}
+                onChange={(e) => handleColorChange(setBgBottomColor, e)}
+                style={{ backgroundColor: bgBottomColor }}
               />
             </div>
             <div className="panel-control">
@@ -68,7 +77,8 @@ function App() {
                 id="iconColor"
                 className="color-picker"
                 value={iconColor}
-                onChange={(e) => setIconColor(e.target.value)}
+                onChange={(e) => handleColorChange(setIconColor, e)}
+                style={{ backgroundColor: iconColor }}
               />
             </div>
             <div className="panel-control">
@@ -78,7 +88,8 @@ function App() {
                 id="fieldColor"
                 className="color-picker"
                 value={fieldColor}
-                onChange={(e) => setFieldColor(e.target.value)}
+                onChange={(e) => handleColorChange(setFieldColor, e)}
+                style={{ backgroundColor: fieldColor }}
               />
             </div>
             <div className="panel-control">
@@ -88,7 +99,8 @@ function App() {
                 id="borderColor"
                 className="color-picker"
                 value={borderColor}
-                onChange={(e) => setBorderColor(e.target.value)}
+                onChange={(e) => handleColorChange(setBorderColor, e)}
+                style={{ backgroundColor: borderColor }}
               />
             </div>
             <div className="panel-control">
@@ -98,7 +110,8 @@ function App() {
                 id="labelColor"
                 className="color-picker"
                 value={labelColor}
-                onChange={(e) => setLabelColor(e.target.value)}
+                onChange={(e) => handleColorChange(setLabelColor, e)}
+                style={{ backgroundColor: labelColor }}
               />
             </div>
             <div className="panel-control">
@@ -127,7 +140,6 @@ function App() {
           <div className="title-control-panel">
             <div className="panel-header">
               <h2 className="panel-title">Titre du formulaire</h2>
-              {/* زر التبديل في العنوان */}
               <div className="switch-container-right">
                 <label className="switch">
                   <input 
@@ -158,7 +170,7 @@ function App() {
                 id="titleColor"
                 className="color-picker"
                 value={titleColor}
-                onChange={(e) => setTitleColor(e.target.value)}
+                onChange={(e) => handleColorChange(setTitleColor, e)}
                 style={{ backgroundColor: titleColor }}
               />
             </div>
@@ -178,7 +190,7 @@ function App() {
 
         {/* عمود النموذج */}
         <div className="order-form-column">
-          <div className="order-form" style={{ borderRadius: `${borderConcavity}px`, border: `${borderSize}px solid ${borderColor}` }}>
+          <div className="order-form" style={{ borderRadius: `${borderConcavity}px`, border: `${borderSize}px solid ${borderColor}`, background: `linear-gradient(180deg, ${bgTopColor} 0%, ${bgBottomColor} 100%)` }}>
             {isTitleVisible && (
               <h2 className="form-title" style={{ color: titleColor, fontSize: `${titleSize}rem` }}>
                 {formTitle}
