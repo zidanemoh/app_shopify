@@ -29,6 +29,11 @@ function App() {
   const [qtyBorderRadius, setQtyBorderRadius] = useState(30);
   const [qtyValue, setQtyValue] = useState(2);
 
+  // خيارات الأسلوب
+  const [isNormalSelected, setIsNormalSelected] = useState(true);
+  const [isInlineSelected, setIsInlineSelected] = useState(false);
+  const [isNoTitleSelected, setIsNoTitleSelected] = useState(false);
+
   const handleColorChange = (setter, event) => {
     setter(event.target.value);
   };
@@ -296,6 +301,30 @@ function App() {
                 value={qtyBorderRadius}
                 onChange={(e) => setQtyBorderRadius(parseInt(e.target.value) || 0)}
               />
+            </div>
+            {/* خيارات النمط - Style Options */}
+            <div className="panel-style-options">
+              <div className="panel-control">
+                <label>Normal</label>
+                <label className="switch">
+                  <input type="checkbox" checked={isNormalSelected} onChange={(e) => setIsNormalSelected(e.target.checked)} />
+                  <span className="slider"></span>
+                </label>
+              </div>
+              <div className="panel-control">
+                <label>Sans le titre</label>
+                <label className="switch">
+                  <input type="checkbox" checked={isNoTitleSelected} onChange={(e) => setIsNoTitleSelected(e.target.checked)} />
+                  <span className="slider"></span>
+                </label>
+              </div>
+              <div className="panel-control">
+                <label>Dans la même ligne</label>
+                <label className="switch">
+                  <input type="checkbox" checked={isInlineSelected} onChange={(e) => setIsInlineSelected(e.target.checked)} />
+                  <span className="slider"></span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
