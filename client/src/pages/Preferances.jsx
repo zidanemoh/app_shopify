@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles/Preferances.css';
 
 function App() {
-  // حالة لإدارة قيم الألوان والأحجام
+  // إدارة الحالة للألوان والإعدادات
   const [bgTopColor, setBgTopColor] = useState("#1a1a1a");
   const [bgBottomColor, setBgBottomColor] = useState("#000000");
   const [iconColor, setIconColor] = useState("#FFFFFF");
@@ -24,15 +24,16 @@ function App() {
 
   // إدارة حالة لوحة التحكم في الكمية
   const [qtyTitle, setQtyTitle] = useState("QTY:");
-  const [qtyFieldColor, setQtyFieldColor] = useState("#E7E7E7");
   const [qtyBtnColor, setQtyBtnColor] = useState("#000000");
   const [qtyBorderRadius, setQtyBorderRadius] = useState(30);
   const [qtyValue, setQtyValue] = useState(2);
+  const [titleColorQty, setTitleColorQty] = useState("#000000");
 
   // خيارات الأسلوب
   const [isNormalSelected, setIsNormalSelected] = useState(true);
   const [isInlineSelected, setIsInlineSelected] = useState(false);
   const [isNoTitleSelected, setIsNoTitleSelected] = useState(false);
+  const [isQtyVisible, setIsQtyVisible] = useState(true);
 
   const handleColorChange = (setter, event) => {
     setter(event.target.value);
@@ -41,6 +42,13 @@ function App() {
   // دالة لتغيير القيمة
   const increaseQty = () => setQtyValue(qtyValue + 1);
   const decreaseQty = () => setQtyValue(qtyValue > 0 ? qtyValue - 1 : 0);
+
+  // إدارة تغيير أنماط العنوان
+  const handleStyleChange = (style) => {
+    setIsNormalSelected(style === "normal");
+    setIsInlineSelected(style === "inline");
+    setIsNoTitleSelected(style === "noTitle");
+  };
 
   return (
     <div className="page-container">
@@ -62,6 +70,16 @@ function App() {
           <div className="form-panel">
             <div className="panel-header">
               <h2 className="panel-title">Formulaire</h2>
+              <div className="switch-container-right">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={isQtyVisible}
+                    onChange={(e) => setIsQtyVisible(e.target.checked)}
+                  />
+                  <span className="slider"></span>
+                </label>
+              </div>
             </div>
             <div className="panel-control">
               <label htmlFor="bgTopColor">La couleur du haut du fond</label>
@@ -255,7 +273,11 @@ function App() {
               <h2 className="panel-title">Quantité</h2>
               <div className="switch-container-right">
                 <label className="switch">
-                  <input type="checkbox" defaultChecked />
+                  <input
+                    type="checkbox"
+                    defaultChecked
+                    onChange={(e) => setIsQtyVisible(e.target.checked)}
+                  />
                   <span className="slider"></span>
                 </label>
               </div>
@@ -271,17 +293,6 @@ function App() {
               />
             </div>
             <div className="panel-control">
-              <label htmlFor="qtyFieldColor">Couleur du Fond</label>
-              <input
-                type="color"
-                id="qtyFieldColor"
-                className="color-picker"
-                value={qtyFieldColor}
-                onChange={(e) => handleColorChange(setQtyFieldColor, e)}
-                style={{ backgroundColor: qtyFieldColor }}
-              />
-            </div>
-            <div className="panel-control">
               <label htmlFor="qtyBtnColor">Couleur</label>
               <input
                 type="color"
@@ -290,6 +301,17 @@ function App() {
                 value={qtyBtnColor}
                 onChange={(e) => handleColorChange(setQtyBtnColor, e)}
                 style={{ backgroundColor: qtyBtnColor }}
+              />
+            </div>
+            <div className="panel-control">
+              <label htmlFor="titleColorQty">Couleur de Titre</label>
+              <input
+                type="color"
+                id="titleColorQty"
+                className="color-picker"
+                value={titleColorQty}
+                onChange={(e) => handleColorChange(setTitleColorQty, e)}
+                style={{ backgroundColor: titleColorQty }}
               />
             </div>
             <div className="panel-control">
@@ -307,21 +329,33 @@ function App() {
               <div className="panel-control">
                 <label>Normal</label>
                 <label className="switch">
-                  <input type="checkbox" checked={isNormalSelected} onChange={(e) => setIsNormalSelected(e.target.checked)} />
+                  <input
+                    type="checkbox"
+                    checked={isNormalSelected}
+                    onChange={() => handleStyleChange("normal")}
+                  />
                   <span className="slider"></span>
                 </label>
               </div>
               <div className="panel-control">
                 <label>Sans le titre</label>
                 <label className="switch">
-                  <input type="checkbox" checked={isNoTitleSelected} onChange={(e) => setIsNoTitleSelected(e.target.checked)} />
+                  <input
+                    type="checkbox"
+                    checked={isNoTitleSelected}
+                    onChange={() => handleStyleChange("noTitle")}
+                  />
                   <span className="slider"></span>
                 </label>
               </div>
               <div className="panel-control">
                 <label>Dans la même ligne</label>
                 <label className="switch">
-                  <input type="checkbox" checked={isInlineSelected} onChange={(e) => setIsInlineSelected(e.target.checked)} />
+                  <input
+                    type="checkbox"
+                    checked={isInlineSelected}
+                    onChange={() => handleStyleChange("inline")}
+                  />
                   <span className="slider"></span>
                 </label>
               </div>
@@ -357,11 +391,16 @@ function App() {
               <label htmlFor="telephone" style={{ color: labelColor }}>Numero Téléphone</label>
               <input type="text" id="telephone" className="form-control" placeholder="Numero Téléphone" style={{ backgroundColor: fieldColor }} />
             </div>
-            <div className="quantity-control">
-              <button className="quantity-btn" onClick={decreaseQty}>-</button>
-              <span className="quantity-value" style={{ color: iconColor }}>{qtyValue}</span>
-              <button className="quantity-btn" onClick={increaseQty}>+</button>
-            </div>
+            {isQtyVisible && (
+              <div className="quantity-control" style={{ flexDirection: isInlineSelected ? "row" : "column" }}>
+                {!isNoTitleSelected && <label style={{ color: titleColorQty, alignSelf: isInlineSelected ? "flex-start" : "center" }}>{qtyTitle}</label>}
+                <div className="quantity-buttons">
+                  <button className="quantity-btn" onClick={decreaseQty} style={{ backgroundColor: qtyBtnColor, borderRadius: `${qtyBorderRadius}px`, color: titleColorQty }}>-</button>
+                  <span className="quantity-value" style={{ color: titleColorQty }}>{qtyValue}</span>
+                  <button className="quantity-btn" onClick={increaseQty} style={{ backgroundColor: qtyBtnColor, borderRadius: `${qtyBorderRadius}px`, color: titleColorQty }}>+</button>
+                </div>
+              </div>
+            )}
             <button className="submit-btn">send orders</button>
           </div>
         </div>
